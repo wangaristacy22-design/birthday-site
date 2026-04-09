@@ -1,3 +1,36 @@
+<!-- BALLOONS -->
+<script>
+const balloonColors = ['#FF6F61','#FFD700','#FF69B4','#00CED1','#FFB347'];
+
+function createBalloon() {
+    const balloon = document.createElement('div');
+    balloon.style.position = 'absolute';
+    balloon.style.bottom = '-50px';
+    balloon.style.left = Math.random()*window.innerWidth + 'px';
+    balloon.style.width = balloon.style.height = (20 + Math.random()*30) + 'px';
+    balloon.style.backgroundColor = balloonColors[Math.floor(Math.random()*balloonColors.length)];
+    balloon.style.borderRadius = '50%';
+    balloon.style.opacity = 0.8;
+    balloon.style.zIndex = 0;
+    balloon.style.animation = `floatUp ${(5 + Math.random()*5)}s linear forwards`;
+    document.body.appendChild(balloon);
+    
+    // Remove balloon after animation
+    setTimeout(() => { balloon.remove(); }, 10000);
+}
+
+// generate balloons every 500ms
+setInterval(createBalloon, 500);
+
+// float animation
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes floatUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); }
+}`;
+document.head.appendChild(style);
+</script>
 <!DOCTYPE html>
 <html>
 <head>
