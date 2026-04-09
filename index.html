@@ -21,7 +21,7 @@
             font-family: 'Fredoka One', cursive;
             font-size: 96px;
             color: #ff6f61;
-            margin-top: 100px;
+            margin-top: 50px;
             animation: wave 2s infinite alternate;
         }
 
@@ -31,39 +31,115 @@
             100% { transform: translateY(0px) rotate(3deg); }
         }
 
-        .music-btn {
-            font-size: 24px;
+        .btn, .music-btn {
+            display: inline-block;
+            margin: 15px;
             padding: 12px 25px;
-            margin-top: 30px;
-            border-radius: 12px;
-            background: linear-gradient(45deg,#ff7eb3,#ffb347);
-            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 30px;
             border: none;
             cursor: pointer;
+            color: white;
+            background: linear-gradient(45deg, #ff7eb3, #ffb347);
             transition: transform 0.3s;
         }
 
-        .music-btn:hover {
+        .btn:hover, .music-btn:hover {
             transform: scale(1.1);
-            background: linear-gradient(45deg,#ffb347,#ff7eb3);
+            background: linear-gradient(45deg, #ffb347, #ff7eb3);
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        textarea {
+            width: 80%;
+            height: 100px;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid #ff6f61;
         }
     </style>
 </head>
 
 <body>
 
+    <!-- Front Page -->
     <h1>🎉 Happy Birthday Stacy! 🎉</h1>
 
-    <!-- Music -->
+    <!-- Music Controls -->
     <div>
         <button class="music-btn" onclick="document.getElementById('bgmusic').play()">🎧 Play Music</button>
         <button class="music-btn" onclick="document.getElementById('bgmusic').pause()">⏸️ Pause Music</button>
     </div>
 
+    <!-- Navigation Buttons -->
+    <div>
+        <button class="btn" onclick="showSection('main')">🏠 Home</button>
+        <button class="btn" onclick="showSection('message')">💌 Leave a Message</button>
+        <button class="btn" onclick="showSection('quiz')">🎮 Play a Game</button>
+        <button class="btn" onclick="showSection('gallery')">📸 Gallery</button>
+        <button class="btn" onclick="showSection('secret')">🎁 Secret</button>
+        <button class="btn" onclick="showSection('support')">💸 Support</button>
+    </div>
+
+    <!-- Background Music -->
     <audio id="bgmusic" loop>
         <source src="birthday-music.mp3" type="audio/mpeg">
         Your browser doesn’t support audio.
     </audio>
+
+    <!-- Sections -->
+
+    <!-- Main/Home Section -->
+    <div id="main" class="section active">
+        <h2>Welcome to my birthday site! 🎉</h2>
+        <p>Click the buttons above to explore surprises, games, messages, and more!</p>
+    </div>
+
+    <!-- Message Section -->
+    <div id="message" class="section">
+        <h2>💌 Leave a Birthday Message</h2>
+        <textarea placeholder="Type your birthday wish here..."></textarea>
+        <br><button class="btn">Submit</button>
+    </div>
+
+    <!-- Quiz Section -->
+    <div id="quiz" class="section">
+        <h2>🎮 Fun Quiz</h2>
+        <p>Question: What is my favorite color?</p>
+        <button class="btn">Red</button>
+        <button class="btn">Blue</button>
+        <button class="btn">Green</button>
+    </div>
+
+    <!-- Gallery Section -->
+    <div id="gallery" class="section">
+        <h2>📸 My Gallery</h2>
+        <p>Photos and memories will appear here!</p>
+    </div>
+
+    <!-- Secret Section -->
+    <div id="secret" class="section">
+        <h2>🎁 Secret Surprises</h2>
+        <p>Here’s a hidden surprise just for you! ✨</p>
+    </div>
+
+    <!-- Support Section -->
+    <div id="support" class="section">
+        <h2>💸 Support Me</h2>
+        <p>If you want to contribute to my birthday fun, click below!</p>
+        <button class="btn">Donate</button>
+    </div>
 
     <!-- Confetti -->
     <script>
@@ -117,6 +193,15 @@
                 100% { transform: translateY(0); }
             }
         </style>`;
+    </script>
+
+    <!-- Show/Hide Sections -->
+    <script>
+        function showSection(id) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
     </script>
 
 </body>
