@@ -1,57 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>My Birthday 🎂</title>
+    <title>My Birthday 🎉</title>
 
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            background: black;
+            color: white;
             text-align: center;
-            color: white;
+            font-family: Arial;
         }
 
-        .container {
-            margin-top: 100px;
+        h1 {
+            margin-top: 50px;
         }
 
-        h1 { font-size: 40px; }
-        p { font-size: 18px; }
-
-        button {
-            padding: 15px 25px;
-            font-size: 18px;
-            border: none;
-            border-radius: 30px;
-            background-color: white;
-            color: #ff69b4;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background-color: #ff69b4;
-            color: white;
+        a {
+            display: block;
+            margin: 20px;
+            font-size: 20px;
+            color: pink;
+            text-decoration: none;
         }
     </style>
 </head>
 
+
 <body>
-    <div class="container">
-        <h1>🎉 You’ve been invited 🎉</h1>
-        <p>Welcome to my birthday world 😌</p>
+    <!-- BALLOONS -->
+<script>
+const balloonColors = ['#FF6F61','#FFD700','#FF69B4','#00CED1','#FFB347'];
 
-        <!-- BUTTON -->
-        <button onclick="enterSite()">Enter if you love me 💕</button>
-    </div>
+function createBalloon() {
+    const balloon = document.createElement('div');
+    balloon.style.position = 'absolute';
+    balloon.style.bottom = '-50px';
+    balloon.style.left = Math.random()*window.innerWidth + 'px';
+    balloon.style.width = balloon.style.height = (20 + Math.random()*30) + 'px';
+    balloon.style.backgroundColor = balloonColors[Math.floor(Math.random()*balloonColors.length)];
+    balloon.style.borderRadius = '50%';
+    balloon.style.opacity = 0.8;
+    balloon.style.zIndex = 0;
+    balloon.style.animation = `floatUp ${(5 + Math.random()*5)}s linear forwards`;
+    document.body.appendChild(balloon);
+    
+    // Remove balloon after animation
+    setTimeout(() => { balloon.remove(); }, 10000);
+}
 
-    <script>
-        function enterSite() {
-            window.location.href = "main.html"; // EXACTLY like this
-        }
-    </script>
+// generate balloons every 500ms
+setInterval(createBalloon, 500);
+
+// float animation
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes floatUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); }
+}`;
+document.head.appendChild(style);
+</script>>
+
+    <h1>Welcome to My Birthday 🎂</h1>
+
+    <a href="message.html">💌 Leave a Message</a>
+    <a href="quiz.html">🎮 Play a Game</a>
+    <a href="gallery.html">📸 My Gallery</a>
+    <a href="secret.html">🎁 Secret Page</a>
+    <a href="money.html">💸 Support Me 😌</a>
+<button onclick="document.getElementById('bgmusic').play()" style="font-size:22px;padding:10px 20px;margin-top:20px;border-radius:10px;background:linear-gradient(45deg,#ff7eb3,#ffb347);color:white;border:none;cursor:pointer;">
+  🎧 Play Music
+</button>
+
+<audio id="bgmusic" loop>
+  <source src="birthday-music.mp3" type="audio/mpeg">
+  Your browser doesn’t support audio.
+</audio>
 </body>
 </html>
