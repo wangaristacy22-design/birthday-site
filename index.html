@@ -85,7 +85,9 @@ video {
 </head>
 
 <body>
-
+<audio id="bgmusic" loop>
+    <source src="birthday-music.mp3" type="audio/mpeg">
+</audio>
 <!-- 🎈 SECTION 1 -->
 <div class="section" style="background-image: url('20260402_093250.jpg');">
 
@@ -210,7 +212,19 @@ for (let i = 0; i < 25; i++) {
             sections.forEach(sec => sec.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
-    </script>
+    <script>
+const music = document.getElementById("bgmusic");
+
+function startMusic() {
+    music.play();
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("scroll", startMusic);
+}
+
+// Start music on first interaction
+document.addEventListener("click", startMusic);
+document.addEventListener("scroll", startMusic);
+</script>
 
 </body>
 </html>
