@@ -1,80 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Birthday 🎉</title>
+<meta charset="UTF-8">
+<title>Gemini Season 🎉</title>
 
-    <style>
-        body {
-            background: black;
-            color: white;
-            text-align: center;
-            font-family: Arial;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Poppins&display=swap" rel="stylesheet">
 
-        h1 {
-            margin-top: 50px;
-        }
-
-        a {
-            display: block;
-            margin: 20px;
-            font-size: 20px;
-            color: pink;
-            text-decoration: none;
-        }
-    </style>
-</head>
-
-
-<body>
-    <!-- BALLOONS -->
-<script>
-const balloonColors = ['#FF6F61','#FFD700','#FF69B4','#00CED1','#FFB347'];
-
-function createBalloon() {
-    const balloon = document.createElement('div');
-    balloon.style.position = 'absolute';
-    balloon.style.bottom = '-50px';
-    balloon.style.left = Math.random()*window.innerWidth + 'px';
-    balloon.style.width = balloon.style.height = (20 + Math.random()*30) + 'px';
-    balloon.style.backgroundColor = balloonColors[Math.floor(Math.random()*balloonColors.length)];
-    balloon.style.borderRadius = '50%';
-    balloon.style.opacity = 0.8;
-    balloon.style.zIndex = 0;
-    balloon.style.animation = `floatUp ${(5 + Math.random()*5)}s linear forwards`;
-    document.body.appendChild(balloon);
-    
-    // Remove balloon after animation
-    setTimeout(() => { balloon.remove(); }, 10000);
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: black;
 }
 
-// generate balloons every 500ms
-setInterval(createBalloon, 500);
+/* SECTIONS */
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
 
-// float animation
-const style = document.createElement('style');
-style.innerHTML = `
+/* GOLD TEXT */
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 12vw;
+    font-weight: 900;
+    background: linear-gradient(45deg,#FFD700,#fff5b7,#FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255,215,0,0.6);
+}
+
+/* SUBTEXT */
+.subtitle {
+    font-size: 3vw;
+    color: white;
+}
+
+/* VIDEO */
+video {
+    width: 80%;
+    border-radius: 20px;
+}
+
+/* BUTTON */
+.btn {
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 20px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(45deg,#ff7eb3,#ffb347);
+    color: white;
+    cursor: pointer;
+}
+
+/* CONFETTI */
+.confetti {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: gold;
+    top: 0;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* BALLOONS */
+.balloon {
+    position: fixed;
+    bottom: -50px;
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: floatUp linear infinite;
+}
+
 @keyframes floatUp {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-120vh); }
-}`;
-document.head.appendChild(style);
-</script>>
+    to {
+        transform: translateY(-120vh);
+    }
+}
+</style>
+</head>
 
-    <h1>Welcome to My Birthday 🎂</h1>
+<body>
 
-    <a href="message.html">💌 Leave a Message</a>
-    <a href="quiz.html">🎮 Play a Game</a>
-    <a href="gallery.html">📸 My Gallery</a>
-    <a href="secret.html">🎁 Secret Page</a>
-    <a href="money.html">💸 Support Me 😌</a>
-<button onclick="document.getElementById('bgmusic').play()" style="font-size:22px;padding:10px 20px;margin-top:20px;border-radius:10px;background:linear-gradient(45deg,#ff7eb3,#ffb347);color:white;border:none;cursor:pointer;">
-  🎧 Play Music
-</button>
+<!-- 🎈 SECTION 1 -->
+<div class="section" style="background-image: url('your-photo.jpg');">
+    <div class="title">Gemini Season</div>
+    <div class="subtitle">✨ Welcome ✨</div>
+</div>
 
-<audio id="bgmusic" loop>
-  <source src="birthday-music.mp3" type="audio/mpeg">
-  Your browser doesn’t support audio.
+<!-- 🎥 SECTION 2 -->
+<div class="section" style="background-image: url('bg2.jpg');">
+    <h2 style="color:white;">🎬 Watch My Birthday Video</h2>
+
+    <video controls>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+</div>
+
+<!-- 🎮 SECTION 3 -->
+<div class="section" style="background:#f5f5dc;">
+    <h2>🎮 Games</h2>
+
+    <p>What is Stacy's favorite game?</p>
+    <button class="btn" onclick="alert('Correct 🎉')">Valorant</button>
+    <button class="btn" onclick="alert('Nope 😅')">Fortnite</button>
+    <button class="btn" onclick="alert('How did yk😝')">Call of Duty</button>
+
+    <p>What is Stacy's favorite color?</p>
+    <button class="btn" onclick="alert('Zii😐')">Brown</button>
+    <button class="btn" onclick="alert('Hiyo ni yako boss😆')">Blue</button>
+    <button class="btn" onclick="alert('PERIOD😝😝')">Black</button>
+</div>
+
+<!-- 📸 SECTION 4 -->
+<div class="section" style="background:#eee;">
+    <h2>📸 Gallery</h2>
+    <img src="pic1.jpg" width="200">
+    <img src="pic2.jpg" width="200">
+</div>
+
+<!-- 💸 SECTION 5 -->
+<div class="section" style="background:#d2b48c;">
+    <h2>💸 Support Her</h2>
+    <p>Support a small content creator 💖</p>
+
+    <button class="btn" onclick="showMpesa()">100 KES</button>
+    <button class="btn" onclick="showMpesa()">500 KES</button>
+    <button class="btn" onclick="showMpesa()">1000 KES</button>
+
+    <p id="mpesa" style="display:none;">
+        Send via M-Pesa to: <br>
+        <b>0707380968</b>
+    </p>
+</div>
+
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+document.addEventListener("click", () => {
+    document.getElementById("music").play();
+}, { once: true });
+
+function showMpesa() {
+    document.getElementById("mpesa").style.display = "block";
+}
+
+/* CONFETTI */
+for(let i=0;i<100;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(c);
+}
+
+/* BALLOONS */
+const colors=['#FFD700','#FF69B4','#00CED1'];
+for(let i=0;i<20;i++){
+    let b=document.createElement("div");
+    b.className="balloon";
+    b.style.left=Math.random()*100+"vw";
+    b.style.background=colors[Math.floor(Math.random()*colors.length)];
+    b.style.animationDuration=(5+Math.random()*5)+"s";
+    document.body.appendChild(b);
+}
+</script>
+
 </body>
 </html>
